@@ -17,6 +17,19 @@ class AppCmdVariety(commands.Cog):
                 res = await response.json()
                 embed = discord.Embed(title="test",description=res["nation"])
                 await ctx.reply(embed=embed)
+    
+    @commands.command()
+    async def testt(self,ctx,user="Nemu627"):
+        async with aiohttp.ClientSession() as session:
+            async with session.get(
+                "http://earthmc-api.herokuapp.com/onlineplayers/"+user
+            ) as response:
+                res = await response.json()
+                if res["name"] == user:
+                    await ctx.reply("online")
+                else:
+                    await ctx.reply("offline")
+        
 
 def setup(bot):
     return bot.add_cog(AppCmdVariety(bot))
