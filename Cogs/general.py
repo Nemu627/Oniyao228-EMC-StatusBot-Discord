@@ -10,7 +10,7 @@ class AppCmdVariety(commands.Cog):
 
         @tasks.loop(seconds=10)
         async def loop():
-            resident = emc.Resident("Oniya0228", data=await get_data())
+            resident = emc.Resident("oniya0228", data=await get_data())
             if resident.online:
                 await self.bot.change_presence(status=discord.Status.online, activity=discord.Activity(name=f"Oniyao228 is online at EarthMC", type=3))
             else:
@@ -64,7 +64,7 @@ class AppCmdVariety(commands.Cog):
         await ctx.send(embed=embed)
         
     @commands.command(aliases=["res", "player", "pl"])
-    async def resident(self, ctx, resident_to_find="Oniyao228"):
+    async def resident(self, ctx, resident_to_find="oniyao228"):
         async with ctx.typing():
             resident = emc.Resident(resident_to_find, data=await get_data())
         embed = discord.Embed(title=resident.name, colour=0x0a8cf0)
