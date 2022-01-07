@@ -9,7 +9,7 @@ class AppCmdVariety(commands.Cog):
         self._last_member = None
         
     
-    @tasks.loop(self, seconds=10)
+    @tasks.loop(seconds=10)
     async def loop():
         resident = emc.Resident("Oniyao228", data=await get_data())
         if resident.online:
