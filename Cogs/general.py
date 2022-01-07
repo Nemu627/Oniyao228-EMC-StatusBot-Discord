@@ -1,34 +1,23 @@
 import discord
-from discord.ext import commands
-import asyncio
-import aiohttp
+from discord.ext import commands, tasks
+import emc
+from emc.async_ import 
 
 class AppCmdVariety(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self._last_member = None
+        
     
-    @commands.command()
-    async def test(self, ctx):
-        async with aiohttp.ClientSession() as session:
-            async with session.get(
-                "http://earthmc-api.herokuapp.com/allplayers/Oniyao228"
-            ) as response:
-                res = await response.json()
-                embed = discord.Embed(title="test",description=res["nation"])
-                await ctx.reply(embed=embed)
-    
-    @commands.command()
-    async def testt(self,ctx,user="Nemu627"):
-        async with aiohttp.ClientSession() as session:
-            async with session.get(
-                "http://earthmc-api.herokuapp.com/onlineplayers/"+user
-            ) as response:
-                res = await response.json()
-                if res["name"] == user:
-                    await ctx.reply("online")
-                else:
-                    await ctx.reply("offline")
+    @tasks.loop(self, seconds=10)
+    async def loop():
+        resident = emc.Resident("Oniyao228", data=await get_data())
+        if resident.online:
+            await self.bot.change_presence(status=discord.Status.online, activity=discord.Activity(name=f"Oniyao228 is online at EarthMC", type=3))
+        else:
+            await self.bot.change_presence(status=discord.Status.idle, activity=discord.Activity(name=f"Oniyao228 is offline at EarthMC", type=3))
+            
+loop.start()
         
 
 def setup(bot):
