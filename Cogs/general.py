@@ -41,7 +41,6 @@ class AppCmdVariety(commands.Cog):
                 embed.add_field(name=f"Online residents [{len(online)}]", value=f"```{', '.join(online)}```", inline=False)
             else:
                 embed.add_field(name="Online residents [0]", value=f"```No online residents in {town}```", inline=False)
-        embed.set_author(name=ctx.author.nick, icon_url=ctx.author.avatar_url)
         await ctx.send(embed=embed)
 
     @commands.command(aliases=["n"])
@@ -62,7 +61,6 @@ class AppCmdVariety(commands.Cog):
                 embed.add_field(name=f"Online [{len(online)}]", value=f"```{', '.join(online)}```", inline=False)
             else:
                 embed.add_field(name="Online [0]", value=f"```0 citizens online in {nation}```", inline=False)
-        embed.set_author(name=ctx.author.nick, icon_url=ctx.author.avatar_url)
         await ctx.send(embed=embed)
         
     @commands.command(aliases=["res", "player", "pl"])
@@ -80,7 +78,6 @@ class AppCmdVariety(commands.Cog):
                 embed.add_field(name="Position", value=f"```{resident.position[0]}/{resident.position[1]}/{resident.position[2]}```([map]({emc.util.map_link(resident.position)}))")
         else:
             embed.add_field(name="Position", value=f"```{resident} is currently offline```")
-        embed.set_author(name=ctx.author.nick, icon_url=ctx.author.avatar_url)
         await ctx.send(embed=embed)
 
 def setup(bot):
