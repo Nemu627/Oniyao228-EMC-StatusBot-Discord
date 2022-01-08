@@ -3,6 +3,15 @@ from discord.ext import commands, tasks
 import emc
 from emc.async_ import get_data
 
+def _long_fields(embed, title, list_):
+    all_comma_sep = ", ".join(list_)
+    if len(all_comma_sep) > 1024-6:
+        list_a = all_comma_sep[:1024-6].split(", ")[:-1]
+        embed.add_field(name=title, value=f"```{', '.join(list_a)}```", inline=False)
+        _long_fields(embed, "\N{zero width space}", list_[len(list_a):])
+    else:
+        embed.add_field(name=title, value=f"```{all_comma_sep}```", inline=False)
+
 class AppCmdVariety(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
