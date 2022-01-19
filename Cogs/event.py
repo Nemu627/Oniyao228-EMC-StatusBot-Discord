@@ -14,21 +14,21 @@ class AppCmdEvent(commands.Cog):
         if isinstance(error, commands.errors.MissingPermissions):
             embed = discord.Embed(
                 title="エラー-不明なコマンド",
-                description="不明なコマンドです。コマンドを確認してください。\nこのエラーが多発する場合は[公式サーバー](https://discord.gg/RFPQmRnv2j)までお問い合わせください。\n```" + error_msg + "```",
+                description="不明なコマンドです。コマンドを確認してください。\nこのエラーが多発する場合は[公式サーバー](https://discord.gg/7BcMVTEHSA)までお問い合わせください。\n```" + error_msg + "```",
                 colour=0xff0000,
             )
             await ctx.reply(embed=embed)
         elif isinstance(error, commands.errors.MissingPermissions):
             embed = discord.Embed(
                 title="エラー-権限不足",
-                description="権限が不足しています。権限設定を確認してください。\nこのエラーが多発する場合は[公式サーバー](https://discord.gg/RFPQmRnv2j)までお問い合わせください。\n```" + error_msg + "```",
+                description="権限が不足しています。権限設定を確認してください。\nこのエラーが多発する場合は[公式サーバー](https://discord.gg/7BcMVTEHSA)までお問い合わせください。\n```" + error_msg + "```",
                 colour=0xff0000,
             )
             await ctx.reply(embed=embed)
         else:
             embed = discord.Embed(
                 title="エラー",
-                description="予期せぬエラーが発生しました。\nこのエラーが多発する場合は[公式サーバー](https://discord.gg/RFPQmRnv2j)までお問い合わせください。\n```" + error_msg + "```",
+                description="予期せぬエラーが発生しました。\nこのエラーが多発する場合は[公式サーバー](https://discord.gg/7BcMVTEHSA)までお問い合わせください。\n```" + error_msg + "```",
                 colour=0xff0000,
             )
             await ctx.reply(embed=embed, mention_author=False)
