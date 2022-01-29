@@ -8,6 +8,7 @@ class AppCmdGlobalChat(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(message):
+        global_channel_name = "oniyama-gc-test"
         if message.channel.name == global_channel_name:
             if message.author.bot:
                 return
