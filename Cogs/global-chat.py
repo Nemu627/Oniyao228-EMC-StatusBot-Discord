@@ -17,8 +17,8 @@ class AppCmdGlobalChat(commands.Cog):
                     if channel == message.channel:
                         continue
                     embed=discord.Embed(description=message.content, color=0x9B95C9)
-                    embed.set_author(name=f"{message.author}",icon_url=message.author.avatar_url)
-                    embed.set_footer(text=f"{message.guild.name}",icon_url=message.guild.icon_url)
+                    embed.set_author(name=f"{message.author}",icon_url=message.author.avatar.url)
+                    embed.set_footer(text=f"{message.guild.name}",icon_url=message.guild.icon.url)
                     if message.attachments != []:
                         embed.set_image(url=message.attachments[0].url)
                     if message.reference:
