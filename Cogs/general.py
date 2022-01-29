@@ -37,7 +37,7 @@ class AppCmdVariety(commands.Cog):
         elif town_to_find == "鬼氷":
             town_to_find = "Onigori"
         elif town_to_find == "鬼六":
-            town_to_find = "Onigori"
+            town_to_find = "ONIROKU"
         try:
             async with ctx.typing():
                 town = emc.Town(town_to_find, data=await get_data())
