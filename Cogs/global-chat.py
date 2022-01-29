@@ -7,12 +7,12 @@ class AppCmdGlobalChat(commands.Cog):
         self._last_member = None
 
     @commands.Cog.listener()
-    async def on_message(message):
+    async def on_message(self,message):
         global_channel_name = "oniyama-gc-test"
         if message.channel.name == global_channel_name:
             if message.author.bot:
                 return
-            for channel in client.get_all_channels():
+            for channel in self.bot.get_all_channels():
                 if channel.name == global_channel_name:
                     if channel == message.channel:
                         continue
@@ -23,17 +23,17 @@ class AppCmdGlobalChat(commands.Cog):
                         embed.set_image(url=message.attachments[0].url)
                     if message.reference:
                         reference_msg = await message.channel.fetch_message(message.reference.message_id)
-                        if reference_msg.embeds and reference_msg.author == client.user:
+                        if reference_msg.embeds and reference_msg.author == self.bot.user:
                             reference_message_content = reference_msg.embeds[0].description
                             reference_message_author = reference_msg.embeds[0].author.name
-                        elif reference_msg.author != client.user:
+                        elif reference_msg.author != self.bot.user:
                             reference_message_content = reference_msg.content
                             reference_message_author = reference_msg.author.name+'#'+reference_msg.author.discriminator
                         reference_content = ""
                         for string in reference_message_content.splitlines():
                             reference_content += "> " + string + "\n"
                         embed.add_field(name=reference_message_author.name, value=reference_content, inline=True)
-                    await channel.send(embed=embed) #メッセージを送信
+                    await channel.send(embed=embed)
 
 def setup(bot):
     return bot.add_cog(AppCmdGlobalChat(bot))
