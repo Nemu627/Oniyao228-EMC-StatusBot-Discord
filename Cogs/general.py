@@ -28,6 +28,8 @@ class AppCmdVariety(commands.Cog):
         
     @commands.command(aliases=["t"])
     async def town(self, ctx, town_to_find="Oniyama"):
+        if town_to_find == "鬼山":
+            town_to_find = "Oniyama"
         try:
             async with ctx.typing():
                 town = emc.Town(town_to_find, data=await get_data())
