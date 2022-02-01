@@ -12,10 +12,10 @@ class AppCmdGlobalChat(commands.Cog):
             return
         topic = "oniyama-gc-test"
         if message.channel.topic == topic:
-            for channel in self.bot.get_all_channels():
-                if channel.category is None:
+            for c in self.bot.get_all_channels():
+                if c.category is None:
                     continue
-                for channel in channel.category.text_channels:
+                for channel in c.category.text_channels:
                     if channel.topic == topic:
                         if channel == message.channel:
                             continue
