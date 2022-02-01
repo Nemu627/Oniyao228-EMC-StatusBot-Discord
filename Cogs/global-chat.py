@@ -10,7 +10,7 @@ class AppCmdGlobalChat(commands.Cog):
     async def on_message(self,message):
         if message.author.bot:
             return
-        topic = "oniyama-gc-test"
+        topic = "oniyama-gc"
         if message.channel.topic == topic:
             for channel in self.bot.get_all_channels():
                 if not isinstance(channel, discord.TextChannel):
