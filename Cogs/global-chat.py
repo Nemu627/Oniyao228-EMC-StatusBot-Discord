@@ -8,12 +8,12 @@ class AppCmdGlobalChat(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self,message):
-        global_channel_name = "oniyama-gc"
-        if message.channel.topic == global_channel_name:
+        global_channel_name = [936793377368854559, 936793396067049543]
+        if message.channel.id == global_channel_name:
             if message.author.bot:
                 return
             for channel in self.bot.get_all_channels():
-                if channel.topic == global_channel_name:
+                if channel.id == global_channel_name:
                     if channel == message.channel:
                         continue
                     embed=discord.Embed(description=message.content, color=0x9B95C9)
