@@ -12,7 +12,7 @@ class AppCmdGlobalChat(commands.Cog):
         if message.channel.topic == global_channel_name:
             if message.author.bot:
                 return
-            for channel in guild.text_channels:
+            for channel in message.guild.text_channels:
                 if channel.topic == global_channel_name:
                     if channel == message.channel:
                         continue
