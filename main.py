@@ -17,8 +17,4 @@ def restart_bot():
 
 bot.load_extension("jishaku")
 
-bot.load_extension("Cogs.event")
-bot.load_extension("Cogs.general")
-bot.load_extension("Cogs.global-chat")
-
 bot.run(token)
