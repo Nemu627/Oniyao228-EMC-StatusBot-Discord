@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import os
+from typing import Tuple
 
 bot = commands.Bot(
     command_prefix=["O!", "o!"],
