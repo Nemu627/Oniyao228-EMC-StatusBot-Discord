@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands, tasks
-import emc
-from emc.async_ import get_data
+import .emc
+from .emc.async_ import get_data
 
 
 class AppCmdVariety(commands.Cog):
