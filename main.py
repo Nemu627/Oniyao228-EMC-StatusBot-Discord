@@ -14,6 +14,6 @@ token = os.environ["token"]
 
 bot.load_extension("jishaku")
 
-bot.load_extension("Cogs.general")
+bot.load_extension("cogs.general")
 
 bot.run(token)
